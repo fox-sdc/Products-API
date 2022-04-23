@@ -19,9 +19,6 @@ DELIMITER ',' CSV HEADER;
 ALTER TABLE styles
 RENAME COLUMN "productId" to "product_id";
 
-ALTER TABLE styles
-RENAME COLUMN "default_style" to "default?";
-
 -- ---
 -- Table "photos"
 --
@@ -45,6 +42,9 @@ DELIMITER ',' CSV HEADER;
 
 ALTER TABLE skus
 RENAME COLUMN "styleId" to "style_id";
+
+UPDATE skus
+SET size = replace(size, ' ', '');
 
 -- ---
 -- Table "features"
