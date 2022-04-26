@@ -92,29 +92,10 @@ ALTER TABLE "features" ADD FOREIGN KEY ("product_id") REFERENCES "products" ("id
 ALTER TABLE "related_products" ADD FOREIGN KEY ("current_product_id") REFERENCES "products" ("id");
 
 -- ---
--- Table Properties
+-- Indexing
 -- ---
-
--- ALTER TABLE "products" ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE "styles" ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE "photos" ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE "skus" ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE "features" ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE "related_products" ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- ---
--- Test Data
--- ---
-
--- INSERT INTO "products" ("id","name","slogan","description","category","default_price") VALUES
--- ('','','','','','');
--- INSERT INTO "styles" ("id","productId","name","sale_price","original_price","default_style") VALUES
--- ('','','','','','');
--- INSERT INTO "photos" ("id","styleId","url","thumbnail_url") VALUES
--- ('','','','');
--- INSERT INTO "skus" ("id","styleId","size","quantity") VALUES
--- ('','','','');
--- INSERT INTO "features" ("id","product_id","feature","value") VALUES
--- ('','','','');
--- INSERT INTO "related_products" ("id","current_product_id","related_product_id") VALUES
--- ('','','');
+CREATE INDEX "features_product_id" ON features (product_id);
+CREATE INDEX "photos_style_id" ON photos (style_id);
+CREATE INDEX "skus_style_id" ON skus (style_id);
+CREATE INDEX "related_products_current_product_id" on related_products (current_product_id);
+CREATE INDEX "styles_product_id" ON styles (product_id);
