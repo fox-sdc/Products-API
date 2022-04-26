@@ -16,8 +16,7 @@ module.exports = {
 
     if (page === '1') {
       query.text = `
-      SELECT *
-
+        SELECT *
         FROM products
         ORDER BY id ASC
         LIMIT 5`;
@@ -87,7 +86,7 @@ module.exports = {
             skus.id,
             JSON_BUILD_OBJECT(
               'quantity', skus.quantity,
-              'size', skus.size
+              'size', TRIM(skus.size)
             )
           ) skus
         FROM skus
@@ -96,8 +95,6 @@ module.exports = {
       ) skus
 
     FROM styles s
-    LEFT JOIN skus ON s.id = skus.style_id
-    LEFT JOIN photos ON s.id = photos.style_id
     WHERE s.product_id = $1;
     `;
     query.values = [productId];

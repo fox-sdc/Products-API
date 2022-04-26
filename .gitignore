@@ -132,3 +132,4 @@ dist
 # my additions
 .DS_Store
 .env
+st-sdc.pem
