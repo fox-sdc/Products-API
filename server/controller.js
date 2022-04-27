@@ -49,4 +49,8 @@ router.get('/products/:productId/related', async (req, res) => {
   }
 });
 
+router.get('/loaderio-38edb8abd84bd47cf6abbdfa3b402891', (req, res) => {
+  res.send('loaderio-38edb8abd84bd47cf6abbdfa3b402891');
+});
+
 module.exports = router;
